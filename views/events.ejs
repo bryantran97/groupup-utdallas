@@ -1,6 +1,31 @@
-<h1>Events page works woohoo!</h1>
+<% include partials/header %>
 
-<%  listOfEvents.forEach(function(events) { %>
-        <h1><%=events.name%></h1>
-        <img src="<%= events.image %>">
-<%  }); %>
+<div class="container">
+    <header class="jumbotron">
+        <div class="container">
+            <h1>Welcome to groupievents</h1>
+            <p>View available events in Dallas</p>
+            <p>
+               <a href="/events/new" class="btn btn-primary btn-lg">Add new Event</a>
+            </p>
+        </div>
+    </header>
+    
+    <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+        <% listOfEvents.forEach(function(event){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                    <img src="<%= event.image %>">
+                    <div class="caption>"><h4><%= event.title %></h4></div>
+                    <div>
+                        <p>
+                            <a href="/events/<%=event._id %>" class="btn btn-primary">More Info</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div> <!-- end of row -->
+</div> <!-- end of container -->
+
+<% include partials/footer %>

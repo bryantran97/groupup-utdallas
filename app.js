@@ -1,32 +1,50 @@
 /* =============================== */
-/*          REQUIRING STUFF        */
+/*           REQUIREMENTS          */
 /* =============================== */
-// Retrieve the Express Package and Require It
-var express = require("express");
-var app = express();
+var express             = require("express");           // our Node.js framework
+var mongoose            = require("mongoose");          // our non-relational database
+var passport            = require("passport");          // out authentication system
+var bodyParser          = require("body-parser");       // our form submission retriever
+var LocalStrategy       = require("passport-local");    // specific authentication system
 
-var bodyParser = require("body-parser");
-app.use(bodyParser.urlencoded({extended:true})); // Always have this in
+var app = express();                                    // place express into app
 
-// Retrieve Mongoose
-var mongoose = require("mongoose");
+/* =============================== */
+/*       ADDING MODELS & SEED      */
+/* =============================== */
+var User                = require("./models/user");     // user model scheme for the database  (dabatase should contain username & password)
+var Event               = require("./models/event");    // event model scheme for the database (database should contain title, img, description)
+var seedDB              = require("./seeds");           // sample post/image/comments for when page starts up
+var Comment             = require("./models/comment");  // comment model scheme for database   (database should have author and comment info)
+
+seedDB();               // call the seed
+        
+/* =============================== */
+/*          CONFIGURATIONS         */
+/* =============================== */
+app.set("view engine", "ejs");                          // this is so express knows all view files are defaulted .ejs
+
+// database connection
 mongoose.connect("mongodb://localhost/groupievents", {useMongoClient: true});
 mongoose.Promise = global.Promise;
 
-// Use EJS package so we don't have to write ".ejs" when we render
-app.set("view engine", "ejs");
+app.use(express.static(__dirname + "/public"));         // let express know the public directory (for CSS file linking)
+app.use(bodyParser.urlencoded({extended:true}));        // let express use bodyParser
+app.use(passport.initialize());                         // allow express to use passport authenticator
+app.use(passport.session());                            // allow express to use passport session
+app.use(require("express-session")({                    // this deals with the session (Not sure what this does actually)
+    secret: "I hate going out to events",
+    resave: false,
+    saveUnitialized: false
+}))
 
-/* =============================== */
-/*         DATABASE SCHEMA         */
-/* =============================== */
+// more passport stuff
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
-// Creating scheme and model for the events
-var eventSchema = new mongoose.Schema({
-    title: String,
-    image: String,
-    description: String
-});
-var Event = mongoose.model("Event", eventSchema);
+
+/* ------------------------------------------------------------------- */
 
 
 /* =============================== */
@@ -36,6 +54,7 @@ var Event = mongoose.model("Event", eventSchema);
 // Make a GET request to our LANDING page
 /* Note: We are rendering a file called landing.ejs in the "views" folder in our project
          We do NOT have to specifically say landing.ejs because we added an EJS packet to deal with that */
+         
 app.get("/", function(req, res){
    res.redirect("/events");
 });
@@ -44,19 +63,14 @@ app.get("/", function(req, res){
 /*            EVENTS PAGE          */
 /* =============================== */
 
-// var events = [
-//     {name: "Gaming Center LAN Party", image: "https://www.geforce.com/sites/default/files-world/attachments/lan-1.png"},
-//     {name: "Picnic, Downtown Dallas Park", image: "http://hngideas.com/wp-content/uploads/2016/06/DIY-picnic-table-1.jpg"},
-//     {name: "Beach Party, Houston(TX)", image: "http://ww3.hdnux.com/photos/57/16/74/12381958/5/920x920.jpg"}
-// ]
-
 app.get("/events", function(req, res){
     // Every time yo make a GET request to  this page retrieve ALL items from the database
     Event.find({}, function(err, allEvents){
        if(err){
            console.log(err);
        } else {
-           res.render("events", {listOfEvents: allEvents});
+           // Render the index.ejs page AND import listOfEvents data (contains all event objects in the database)
+           res.render("events/index", {listOfEvents: allEvents});
        }
     });
 });
@@ -67,7 +81,7 @@ app.get("/events", function(req, res){
 
 // Request the NEW page
 app.get("/events/new", function(req, res){
-    res.render("new");
+    res.render("events/new");
 });
 
 // After Clicking the SUBMIT button on the New page, RUN THIS.
@@ -99,13 +113,78 @@ app.post("/events", function(req, res){
 
 app.get("/events/:id", function(req, res){
     // Find event with specific ID provided
-    Event.findById(req.params.id, function(err, foundEvent){
+    Event.findById(req.params.id).populate("comments").exec(function(err, foundEvent){
         if(err){
             console.log(err);
         } else {
-            res.render("show", {eventData: foundEvent})
+            res.render("events/show", {eventData: foundEvent})
         }
     });
+});
+
+/* =============================== */
+/*          COMMENTS ROUTING       */
+/* =============================== */
+
+app.get("/events/:id/comments/new", function(req, res){
+    Event.findById(req.params.id, function(err, event){
+       if(err){
+           console.log(err);
+       } else {
+           res.render("comments/new", {eventData: event});
+       }
+    });
+});
+
+app.post("/events/:id/comments", function(req, res){
+    // Look up events by their ID, retrieve info and put into "event"
+    Event.findById(req.params.id, function(err, event){
+        if(err){
+            console.log(err);
+            res.redirect("/events");
+        } else {
+            // Access the comments DB and create a comment with the object "comment" from the new comment form page
+            // Push the object into "comment"
+            Comment.create(req.body.comment, function(err, comment){
+                if(err){
+                    console.log(err);
+                } else {
+                    // Interfere with Event's data : "event", by pushing a new comment into into Event's database's item object: "comments"
+                    event.comments.push(comment);
+                    // Save it
+                    event.save();
+                    // Redirect towards the original page to see new comment
+                    res.redirect("/events/" + event._id)
+                }
+            });
+        }
+    });
+})
+
+/* =============================== */
+/*            AUTH ROUTES          */
+/* =============================== */
+
+// Request to render the register.ejs file
+app.get("/register", function(req, res){
+    res.render("register");
+})
+
+app.post("/register", function(req, res){
+    // Create a new User with specific username
+    var newUser = new User({username: req.body.username});
+    // Register that user with a password (it'll be hashed)
+    User.register(newUser, req.body.password, function(err, user){
+        if(err){
+            // If there's an error, return to the register page again
+            console.log(err);
+            return res.render("register");
+        }
+        // If there's no issue, it'll authenticate it and if authenticated, it'll return you to the events page
+        passport.authenticate("local")(req, res, function(){
+            res.redirect("/events"); 
+        });
+    })
 });
 
 /* =============================== */

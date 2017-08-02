@@ -30,18 +30,23 @@ mongoose.Promise = global.Promise;
 
 app.use(express.static(__dirname + "/public"));         // let express know the public directory (for CSS file linking)
 app.use(bodyParser.urlencoded({extended:true}));        // let express use bodyParser
-app.use(passport.initialize());                         // allow express to use passport authenticator
-app.use(passport.session());                            // allow express to use passport session
 app.use(require("express-session")({                    // this deals with the session (Not sure what this does actually)
-    secret: "I hate going out to events",
+    secret: "I'm a panda bear",
     resave: false,
     saveUnitialized: false
-}))
+}));
+app.use(passport.initialize());                         // allow express to use passport authenticator
+app.use(passport.session());                            // allow express to use passport session
 
 // more passport stuff
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+app.use(function(req, res, next){
+   res.locals.currentUser = req.user;
+   next();
+});
 
 
 /* ------------------------------------------------------------------- */
@@ -123,10 +128,10 @@ app.get("/events/:id", function(req, res){
 });
 
 /* =============================== */
-/*          COMMENTS ROUTING       */
+/*         COMMENTS ROUTING        */
 /* =============================== */
 
-app.get("/events/:id/comments/new", function(req, res){
+app.get("/events/:id/comments/new", isLoggedIn, function(req, res){
     Event.findById(req.params.id, function(err, event){
        if(err){
            console.log(err);
@@ -136,7 +141,7 @@ app.get("/events/:id/comments/new", function(req, res){
     });
 });
 
-app.post("/events/:id/comments", function(req, res){
+app.post("/events/:id/comments", isLoggedIn, function(req, res){
     // Look up events by their ID, retrieve info and put into "event"
     Event.findById(req.params.id, function(err, event){
         if(err){
@@ -186,6 +191,33 @@ app.post("/register", function(req, res){
         });
     })
 });
+
+// request log in page
+app.get("/login", function(req, res){
+    res.render("login");
+})
+
+// authenticate user
+app.post("/login", passport.authenticate("local", 
+    {   successRedirect: "/events", 
+        failureRedirect: "/login"
+    }), function(req, res){
+});
+
+// log out request
+app.get("/logout", function(req, res){
+    req.logout();
+    res.redirect("/events");
+});
+
+// middleware
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/login");
+}
+
 
 /* =============================== */
 /*          CHECKING SERVER        */

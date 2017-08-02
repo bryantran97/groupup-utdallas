@@ -18,7 +18,16 @@ var seedDB              = require("./seeds");           // sample post/image/com
 var Comment             = require("./models/comment");  // comment model scheme for database   (database should have author and comment info)
 
 seedDB();               // call the seed
-        
+
+/* =============================== */
+/*         ADDING IN ROUTES        */
+/* =============================== */
+
+// Refactored code by putting routes into separate files
+var eventRoutes         = require("./routes/events");   // retrieve routes from these three files
+var commentRoutes       = require("./routes/comments");
+var authRoutes          = require("./routes/auth");
+
 /* =============================== */
 /*          CONFIGURATIONS         */
 /* =============================== */
@@ -43,181 +52,14 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use(function(req, res, next){
-   res.locals.currentUser = req.user;
+app.use(function(req, res, next){                       // This is so user's info can be spread throughout all pages
+   res.locals.currentUser = req.user;                   // *** REALLY USEFUL FOR WHEN USERS ARE IN A SESSION ***
    next();
 });
 
-
-/* ------------------------------------------------------------------- */
-
-
-/* =============================== */
-/*           LANDING PAGE          */
-/* =============================== */
-
-// Make a GET request to our LANDING page
-/* Note: We are rendering a file called landing.ejs in the "views" folder in our project
-         We do NOT have to specifically say landing.ejs because we added an EJS packet to deal with that */
-         
-app.get("/", function(req, res){
-   res.redirect("/events");
-});
-
-/* =============================== */
-/*            EVENTS PAGE          */
-/* =============================== */
-
-app.get("/events", function(req, res){
-    // Every time yo make a GET request to  this page retrieve ALL items from the database
-    Event.find({}, function(err, allEvents){
-       if(err){
-           console.log(err);
-       } else {
-           // Render the index.ejs page AND import listOfEvents data (contains all event objects in the database)
-           res.render("events/index", {listOfEvents: allEvents});
-       }
-    });
-});
-
-/* =============================== */
-/*          NEW EVENT PAGE         */
-/* =============================== */
-
-// Request the NEW page
-app.get("/events/new", function(req, res){
-    res.render("events/new");
-});
-
-// After Clicking the SUBMIT button on the New page, RUN THIS.
-// It'll make a POST request to the /events page
-app.post("/events", function(req, res){
-    console.log("I made a post request");
-    // Request the information from the forms (using body-parser)
-    var eventTitle = req.body.titleOfEvent;
-    var eventImageURL = req.body.imgURL;
-    var eventDescription = req.body.description;
-    
-    // If there was a post request made, post it to the DATABASE
-    var newEventPost = {title: eventTitle, image: eventImageURL, description: eventDescription};
-    
-    // Then access the Database for EVENT and place in items if no error occurs
-    Event.create(newEventPost, function(err, newlyCreated){
-        if(err){
-            console.log(err);
-        } else {
-            // It'll redirect to the /events page (Automatically GET);
-            res.redirect("/events");
-        }
-    })
-});
-
-/* =============================== */
-/*        SHOW SPECIFIC EVENT      */
-/* =============================== */
-
-app.get("/events/:id", function(req, res){
-    // Find event with specific ID provided
-    Event.findById(req.params.id).populate("comments").exec(function(err, foundEvent){
-        if(err){
-            console.log(err);
-        } else {
-            res.render("events/show", {eventData: foundEvent})
-        }
-    });
-});
-
-/* =============================== */
-/*         COMMENTS ROUTING        */
-/* =============================== */
-
-app.get("/events/:id/comments/new", isLoggedIn, function(req, res){
-    Event.findById(req.params.id, function(err, event){
-       if(err){
-           console.log(err);
-       } else {
-           res.render("comments/new", {eventData: event});
-       }
-    });
-});
-
-app.post("/events/:id/comments", isLoggedIn, function(req, res){
-    // Look up events by their ID, retrieve info and put into "event"
-    Event.findById(req.params.id, function(err, event){
-        if(err){
-            console.log(err);
-            res.redirect("/events");
-        } else {
-            // Access the comments DB and create a comment with the object "comment" from the new comment form page
-            // Push the object into "comment"
-            Comment.create(req.body.comment, function(err, comment){
-                if(err){
-                    console.log(err);
-                } else {
-                    // Interfere with Event's data : "event", by pushing a new comment into into Event's database's item object: "comments"
-                    event.comments.push(comment);
-                    // Save it
-                    event.save();
-                    // Redirect towards the original page to see new comment
-                    res.redirect("/events/" + event._id)
-                }
-            });
-        }
-    });
-})
-
-/* =============================== */
-/*            AUTH ROUTES          */
-/* =============================== */
-
-// Request to render the register.ejs file
-app.get("/register", function(req, res){
-    res.render("register");
-})
-
-app.post("/register", function(req, res){
-    // Create a new User with specific username
-    var newUser = new User({username: req.body.username});
-    // Register that user with a password (it'll be hashed)
-    User.register(newUser, req.body.password, function(err, user){
-        if(err){
-            // If there's an error, return to the register page again
-            console.log(err);
-            return res.render("register");
-        }
-        // If there's no issue, it'll authenticate it and if authenticated, it'll return you to the events page
-        passport.authenticate("local")(req, res, function(){
-            res.redirect("/events"); 
-        });
-    })
-});
-
-// request log in page
-app.get("/login", function(req, res){
-    res.render("login");
-})
-
-// authenticate user
-app.post("/login", passport.authenticate("local", 
-    {   successRedirect: "/events", 
-        failureRedirect: "/login"
-    }), function(req, res){
-});
-
-// log out request
-app.get("/logout", function(req, res){
-    req.logout();
-    res.redirect("/events");
-});
-
-// middleware
-function isLoggedIn(req, res, next){
-    if(req.isAuthenticated()){
-        return next();
-    }
-    res.redirect("/login");
-}
-
+app.use(authRoutes);                                    // Adding in routes so we can use them
+app.use(commentRoutes);
+app.use(eventRoutes);
 
 /* =============================== */
 /*          CHECKING SERVER        */

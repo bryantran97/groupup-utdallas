@@ -36,21 +36,26 @@ router.get("/events", function(req, res){
 /* =============================== */
 
 // Request the NEW page
-router.get("/events/new", function(req, res){
+router.get("/events/new", isLoggedIn, function(req, res){
     res.render("events/new");
 });
 
 // After Clicking the SUBMIT button on the New page, RUN THIS.
 // It'll make a POST request to the /events page
-router.post("/events", function(req, res){
+router.post("/events", isLoggedIn, function(req, res){
     console.log("I made a post request");
     // Request the information from the forms (using body-parser)
     var eventTitle = req.body.titleOfEvent;
     var eventImageURL = req.body.imgURL;
     var eventDescription = req.body.description;
     
+    var authorOfPost = {
+        id: req.user._id,
+        username: req.user.username
+    }
+    
     // If there was a post request made, post it to the DATABASE
-    var newEventPost = {title: eventTitle, image: eventImageURL, description: eventDescription};
+    var newEventPost = {title: eventTitle, image: eventImageURL, description: eventDescription, author: authorOfPost};
     
     // Then access the Database for EVENT and place in items if no error occurs
     Event.create(newEventPost, function(err, newlyCreated){
@@ -77,5 +82,12 @@ router.get("/events/:id", function(req, res){
         }
     });
 });
+
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/login");
+}
 
 module.exports = router;

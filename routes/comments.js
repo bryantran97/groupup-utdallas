@@ -30,9 +30,15 @@ router.post("/events/:id/comments", isLoggedIn, function(req, res){
                 if(err){
                     console.log(err);
                 } else {
+                    
+                    // Access comment schema and manually place in Author's ID and Username
+                    // req.user.id is valid because USER is created and put into the session as soon as you login (login route on index.js)
+                    comment.author.id = req.user.id;
+                    comment.author.username = req.user.username;
+                    comment.save();
+                    
                     // Interfere with Event's data : "event", by pushing a new comment into into Event's database's item object: "comments"
                     event.comments.push(comment);
-                    // Save it
                     event.save();
                     // Redirect towards the original page to see new comment
                     res.redirect("/events/" + event._id)

@@ -29,30 +29,30 @@ function seedDB(){
         if(err){
             console.log(err);
         } else {
-            // If remove is success, then for EACH item in the sample list (note: seed contains all the object info of EACH sample eventData)
-            eventData.forEach(function(seed){
-                // Access the Events Database and Create some Sample Data (seed)
-                Event.create(seed, function(err, data){
-                    console.log("I've added a sample event");
-                    if(err){
-                        console.log(err);
-                    } else {
-                        console.log("I've created a sample comment.");
-                        // Access the Comment Database and create a comment
-                        Comment.create({
-                            text: "Hey man, this place is awesome sauce!",
-                            author: "Homer"
-                        }, function(err, comment){
-                            if(err){
-                                console.log(err);
-                            } else {
-                                data.comments.push(comment);
-                                data.save();
-                            }
-                        });
-                    }
-                });
-            })
+            // // If remove is success, then for EACH item in the sample list (note: seed contains all the object info of EACH sample eventData)
+            // eventData.forEach(function(seed){
+            //     // Access the Events Database and Create some Sample Data (seed)
+            //     Event.create(seed, function(err, data){
+            //         console.log("I've added a sample event");
+            //         if(err){
+            //             console.log(err);
+            //         } else {
+            //             console.log("I've created a sample comment.");
+            //             // Access the Comment Database and create a comment
+            //             Comment.create({
+            //                 text: "Hey man, this place is awesome sauce!",
+            //                 author: "Homer"
+            //             }, function(err, comment){
+            //                 if(err){
+            //                     console.log(err);
+            //                 } else {
+            //                     data.comments.push(comment);
+            //                     data.save();
+            //                 }
+            //             });
+            //         }
+            //     });
+            // })
         }
     });
 };

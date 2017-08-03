@@ -17,7 +17,7 @@ var Event               = require("./models/event");    // event model scheme fo
 var seedDB              = require("./seeds");           // sample post/image/comments for when page starts up
 var Comment             = require("./models/comment");  // comment model scheme for database   (database should have author and comment info)
 
-seedDB();               // call the seed
+// seedDB();               // call the seed
 
 /* =============================== */
 /*         ADDING IN ROUTES        */

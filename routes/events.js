@@ -150,18 +150,18 @@ function checkEventOwnership(req, res, next){
     if(req.isAuthenticated()){
         Event.findById(req.params.id, function(err, foundEvent){
             if(err){
-                res.redirect("/events");
+                res.redirect("back");
             } else {
                 // Check if the Database's Event Model has a AUTHOR that equals (Mongoose method) to the current USER ID
                 if(foundEvent.author.id.equals(req.user._id) || req.user.username == 'bryantran97') {
                     next();
                 } else {
-                    res.redirect("/events");
+                    res.redirect("back");
                 }
             }
         })
     } else {
-        res.redirect("/events");
+        res.redirect("back");
     }
 }
 

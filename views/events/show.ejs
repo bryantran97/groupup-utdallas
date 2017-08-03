@@ -19,10 +19,10 @@
                     <p><em>Submitted By: <strong><%= eventData.author.username %></strong></em></p>
                     
                     <% if(currentUser && (eventData.author.id.equals(currentUser._id) || currentUser.username == "bryantran97")) { %>
-                    <a class="btn btn-warning" href="/events/<%= eventData._id %>/edit"> Edit </a>
-                    <form id="deleteForm" action="/events/<%= eventData._id %>?_method=DELETE" method="POST">
-                        <button class="btn btn-danger"> Delete </button>
-                    </form>
+                        <a class="btn btn-warning" href="/events/<%= eventData._id %>/edit"> Edit </a>
+                        <form id="deleteForm" action="/events/<%= eventData._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-danger"> Delete </button>
+                        </form>
                     <% } %>
                 </div>
             </div>
@@ -37,10 +37,12 @@
                             <strong><%= comment.author.username %></strong>
                             <span class="pull-right">10 days ago</span>
                             <p><%= comment.text %></p>
-                            <a class="btn btn-xs btn-warning" href="/events/<%=eventData._id%>/comments/<%=comment._id%>/edit">Edit</a>
-                            <form id="deleteForm" action="/events/<%=eventData._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
-                                <button class="btn btn-xs btn-danger">Delete</button>
-                            </form>
+                            <% if(currentUser && currentUser.username == "bryantran97") { %>
+                                <a class="btn btn-xs btn-warning" href="/events/<%=eventData._id%>/comments/<%=comment._id%>/edit">Edit</a>
+                                <form id="deleteForm" action="/events/<%=eventData._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                                    <button class="btn btn-xs btn-danger">Delete</button>
+                                </form>
+                            <% } %>
                         </div>
                     </div>
                 <% }) %>

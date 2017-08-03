@@ -2,9 +2,9 @@
 
 <div class="container">
     <div class="row">
-    <h1 style="text-align: center;">Add a New Comment to <%= eventData.title %></h1>
+    <h1 style="text-align: center;">Edit your comment</h1>
         <div style="width: 30%; margin: 30px auto;">
-            <form action="/events/<%= eventData._id%>/comments" method="POST">
+            <form action="/events/<%= eventData_id %>/comments/<%= comment %>?_method=PUT" method="POST">
                 <div class="form-group">
                     <input type="text" name="comment[text]" placeholder="text" class="form-control">
                 </div>
@@ -12,9 +12,8 @@
                     <button class="btn btn-lg btn-primary btn-block">Submit!</button>
                 </div>
             </form>
-            <a href="/events/<%= eventData._id%>">Go back</a>
+            <a href="/events/<%= eventData_id %>">Go back</a>
         </div>
     </div>
 </div>
-
 <% include ../partials/footer %>

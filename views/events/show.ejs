@@ -11,7 +11,7 @@
         </div>
         <div class="col-md-9">
             <div class="thumbnail">
-                <img class="img-responsive" src="<%= eventData.image %>">
+                <img class="img-responsive frontpage-images" src="<%= eventData.image %>">
                 <div class="caption-full">
                     <h4 class="pull-right">$9.00/night</h4>
                     <h4><a><%=eventData.title%></a></h4>
@@ -37,6 +37,10 @@
                             <strong><%= comment.author.username %></strong>
                             <span class="pull-right">10 days ago</span>
                             <p><%= comment.text %></p>
+                            <a class="btn btn-xs btn-warning" href="/events/<%=eventData._id%>/comments/<%=comment._id%>/edit">Edit</a>
+                            <form id="deleteForm" action="/events/<%=eventData._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                                <button class="btn btn-xs btn-danger">Delete</button>
+                            </form>
                         </div>
                     </div>
                 <% }) %>

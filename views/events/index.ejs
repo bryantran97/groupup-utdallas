@@ -8,6 +8,9 @@
             <p>
                <a href="/events/new" class="btn btn-primary btn-lg">Add new Event</a>
             </p>
+            
+            <hr>
+            <p>Note: Since so many people were posting pornographic material I disabled image as an option. I'll edit an image in myself, and edit your post manually if you post inappropriate (foul language) material.</p>
         </div>
     </header>
     
@@ -15,7 +18,7 @@
         <% listOfEvents.forEach(function(event){ %>
             <div class="col-md-3 col-sm-6">
                 <div class="thumbnail">
-                    <img src="<%= event.image %>">
+                    <img id="frontpage-images" src="<%= event.image %>">
                     <div class="caption>"><h4><%= event.title %></h4></div>
                     <div>
                         <p>

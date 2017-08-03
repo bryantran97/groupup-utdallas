@@ -49,7 +49,45 @@ router.post("/events/:id/comments", isLoggedIn, function(req, res){
 })
 
 /* =============================== */
-/*             MIDDLEWARE          */
+/*             EDIT ROUTE          */
+/* =============================== */
+
+router.get("/events/:id/comments/:comment_id/edit", function(req, res){
+    Comment.findById(req.params.id, function(err, foundComment){
+        if(err){
+            res.redirect("back");
+        } else {
+            res.render("comments/edit", {eventData_id: req.params.id, comment: req.params.comment_id})
+        }
+    })
+});
+
+router.put("/events/:id/comments/:comment_id", function(req, res){
+    Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment){
+        if(err){
+            res.redirect("back");
+        } else {
+            res.redirect("/events/" + req.params.id);
+        }
+    })
+})
+
+/* =============================== */
+/*           DELETE ROUTE          */
+/* =============================== */
+
+router.delete("/events/:id/comments/:comment_id", function(req, res){
+    Comment.findByIdAndRemove(req.params.comment_id, function(err){
+        if(err){
+            res.redirect("back");
+        } else {
+            res.redirect("/events/" + req.params.id)
+        }
+    })
+});
+
+/* =============================== */
+/*            MIDDLEWARE           */
 /* =============================== */
 
 function isLoggedIn(req, res, next){

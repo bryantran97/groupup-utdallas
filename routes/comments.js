@@ -48,7 +48,10 @@ router.post("/events/:id/comments", isLoggedIn, function(req, res){
     });
 })
 
-// Middleware
+/* =============================== */
+/*             MIDDLEWARE          */
+/* =============================== */
+
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
         return next();

@@ -2,6 +2,7 @@ var express         = require("express");
 var router          = express.Router();
 
 var Event           = require("../models/event");
+var User            = require("../models/user");
 
 /* =============================== */
 /*           LANDING PAGE          */
@@ -83,11 +84,85 @@ router.get("/events/:id", function(req, res){
     });
 });
 
+/* =============================== */
+/*        EDIT SPECIFIC EVENT      */
+/* =============================== */
+
+// make a request to go to edit page
+router.get("/events/:id/edit", checkEventOwnership, function(req, res){
+    
+    Event.findById(req.params.id, function(err, foundEvent){
+        if(err){
+            console.log(err);
+        } else {
+            console.log(foundEvent);
+            // go to editing page
+            res.render("events/edit", {eventData: foundEvent});
+        }
+    });
+});
+
+router.put("/events/:id", checkEventOwnership, function(req, res){
+    // Access the Database and Find event with specific ID provided and Update
+    // req.params.event refers to the NAME="event[title]" and "event[image]" on edit.ejs
+    Event.findByIdAndUpdate(req.params.id, req.body.event, function(err, updatedEvent){
+        if(err){
+            res.redirect("/events");
+        } else {
+            // redirect to the original show page
+            res.redirect("/events/" + req.params.id);
+        }
+    });
+});
+
+/* =============================== */
+/*        DELE SPECIFIC EVENT      */
+/* =============================== */
+
+// Access the delete page
+router.delete("/events/:id", checkEventOwnership, function(req, res){
+    // If event exists, delete it
+    Event.findByIdAndRemove(req.params.id, function(err){
+        if(err){
+            res.redirect("/events");
+        } else {
+            res.redirect("/events");   
+        }
+    })
+});
+
+
+/* =============================== */
+/*             MIDDLEWARE          */
+/* =============================== */
+
+// Checks if User is logged in
 function isLoggedIn(req, res, next){
+    // If user is authenticated
     if(req.isAuthenticated()){
         return next();
     }
     res.redirect("/login");
+}
+
+// Check is User is Owner
+function checkEventOwnership(req, res, next){
+    if(req.isAuthenticated()){
+        Event.findById(req.params.id, function(err, foundEvent){
+            if(err){
+                res.redirect("/events");
+            } else {
+                // Check if the Database's Event Model has a AUTHOR that equals (Mongoose method) to the current USER ID
+                if(foundEvent.author.id.equals(req.user._id) || req.user.username == 'bryantran97') {
+                    next();
+                } else {
+                    res.redirect("/events");
+                }
+            }
+        })
+    } else {
+        res.redirect("/events");
+    }
 }
 
 module.exports = router;

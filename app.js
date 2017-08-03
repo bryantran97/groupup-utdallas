@@ -6,6 +6,7 @@ var mongoose            = require("mongoose");          // our non-relational da
 var passport            = require("passport");          // out authentication system
 var bodyParser          = require("body-parser");       // our form submission retriever
 var LocalStrategy       = require("passport-local");    // specific authentication system
+var methodOverride      = require("method-override");   // so we can make update/delete requests
 
 var app = express();                                    // place express into app
 
@@ -32,6 +33,7 @@ var authRoutes          = require("./routes/auth");
 /*          CONFIGURATIONS         */
 /* =============================== */
 app.set("view engine", "ejs");                          // this is so express knows all view files are defaulted .ejs
+app.use(methodOverride("_method"));                     // adding method indicator
 
 // database connection
 mongoose.connect("mongodb://localhost/groupievents", {useMongoClient: true});
@@ -52,14 +54,16 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use(function(req, res, next){                       // This is so user's info can be spread throughout all pages
+// for all pages at all times, give the currentUser variable the req.user info
+app.use(function(req, res, next){                       // this is so user's info can be spread throughout all pages
    res.locals.currentUser = req.user;                   // *** REALLY USEFUL FOR WHEN USERS ARE IN A SESSION ***
    next();
 });
 
-app.use(authRoutes);                                    // Adding in routes so we can use them
+app.use(authRoutes);                                    // adding in routes so we can use them
 app.use(commentRoutes);
 app.use(eventRoutes);
+
 
 /* =============================== */
 /*          CHECKING SERVER        */

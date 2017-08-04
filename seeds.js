@@ -1,6 +1,14 @@
+/* =============================== */
+/*           REQUIREMENTS          */
+/* =============================== */
+
 var mongoose = require("mongoose");
 var Event = require("./models/event");
 var Comment = require("./models/comment");
+
+/* =============================== */
+/*         RESET/SAMPLEDATA        */
+/* =============================== */
 
 // Sample Data
 var eventData = [
@@ -57,4 +65,5 @@ function seedDB(){
     });
 };
 
+// export the module
 module.exports = seedDB;

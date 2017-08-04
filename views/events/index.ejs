@@ -1,16 +1,16 @@
 <% include ../partials/header %>
 
 <div class="container">
-    <header class="jumbotron">
+    <header id="box" class="jumbotron">
         <div class="container">
-            <h1>Welcome to groupievents</h1>
-            <p>View available events in Dallas</p>
-            <p>
-               <a href="/events/new" class="btn btn-primary btn-lg">Add new Event</a>
-            </p>
+            <h2>Welcome to groupievents</h2>
+            <h4>View available events in Dallas</h4>
+            <h4>
+               <a href="/events/new" id="addEventBtn">POST AN EVENT</a>
+            </h4>
             
             <hr>
-            <p>Note: Since so many people were posting pornographic material I disabled image as an option. I'll edit an image in myself, and edit your post manually if you post inappropriate (foul language) material.</p>
+            <h5>Note: Since so many people were posting pornographic material I disabled image as an option. I'll edit an image in myself, and edit your post manually if you post inappropriate (foul language) material.</h5>
         </div>
     </header>
     
@@ -18,11 +18,11 @@
         <% listOfEvents.forEach(function(event){ %>
             <div class="col-md-3 col-sm-6">
                 <div class="thumbnail">
-                    <img id="frontpage-images" src="<%= event.image %>">
-                    <div class="caption>"><h4><%= event.title %></h4></div>
+                    <img id="eventlisting-images" src="<%= event.image %>">
+                    <div class="caption>"><h4><%= event.title.substring(0,35) %></h4></div>
                     <div>
                         <p>
-                            <a href="/events/<%=event._id %>" class="btn btn-primary">More Info</a>
+                            <a href="/events/<%=event._id %>" id="moreInfoBtn">MORE INFO</a>
                         </p>
                     </div>
                 </div>

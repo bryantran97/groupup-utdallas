@@ -1,21 +1,48 @@
-.thumbnail img {
+.navbar {
+   background-color: transparent;
+   background: transparent;
+   border-color: transparent;
+}
+
+.navbar li { color: #000 } 
+
+/* =============================== */
+/*        FULL LANDING PAGE        */
+/* =============================== */
+
+
+
+
+
+/* =============================== */
+/*        EVENT LISTING PAGE       */
+/* =============================== */
+
+#eventlisting-images {
+    width: 100%;
+    height: 200px;
+}
+
+.jumbotron {
+    text-align: center;
+    background: rgb(0, 0, 0); /* This is for ie8 and below */
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+/* =============================== */
+/*          SPECIFIC EVENT         */
+/* =============================== */
+
+.thumbnail img {                        /* Allows images to fill the width of thumbnail */
     width: 100%;
 }
 
-.thumbnail {
-    padding: 0;
-}
 
-.thumbnail .caption-full {
+.thumbnail .caption-full {              /* Gives space for items to not touch borders */
     padding: 9px;
 }
 
 #deleteForm {
     display: inline;
-}
-
-#frontpage-images {
-    width: 100%;
-    height: 200px;
-    
 }

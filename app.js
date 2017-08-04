@@ -19,7 +19,7 @@ var Event               = require("./models/event");    // event model scheme fo
 var seedDB              = require("./seeds");           // sample post/image/comments for when page starts up
 var Comment             = require("./models/comment");  // comment model scheme for database   (database should have author and comment info)
 
-// seedDB();               // call the seed
+// seedDB();            // call the seed (Using it to reset)
 
 /* =============================== */
 /*         ADDING IN ROUTES        */
@@ -73,6 +73,7 @@ app.use(eventRoutes);
 /*          CHECKING SERVER        */
 /* =============================== */
 
+// this will listen into the server and tell me if the server is fuctioning properly
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("groupievent server is fully functional, Bryan.");
 });

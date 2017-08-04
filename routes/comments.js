@@ -1,8 +1,16 @@
+/* =============================== */
+/*           REQUIREMENTS          */
+/* =============================== */
+
 var express         = require("express");
 var router          = express.Router();
 
 var Event           = require("../models/event");
 var Comment         = require("../models/comment");
+
+/* =============================== */
+/*            ADDING ROUTE         */
+/* =============================== */
 
 // Adding a new comment
 router.get("/events/:id/comments/new", isLoggedIn, function(req, res){
@@ -41,6 +49,7 @@ router.post("/events/:id/comments", isLoggedIn, function(req, res){
                     event.comments.push(comment);
                     event.save();
                     // Redirect towards the original page to see new comment
+                    req.flash("success", "Succesfully added comment");
                     res.redirect("/events/" + event._id)
                 }
             });
@@ -94,6 +103,7 @@ function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
         return next();
     }
+    req.flash("error", "Unfortunately you need to be logged in to do that - Bryan");
     res.redirect("/login");
 }
 

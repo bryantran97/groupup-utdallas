@@ -7,6 +7,7 @@ var passport            = require("passport");          // out authentication sy
 var bodyParser          = require("body-parser");       // our form submission retriever
 var LocalStrategy       = require("passport-local");    // specific authentication system
 var methodOverride      = require("method-override");   // so we can make update/delete requests
+var flash               = require("connect-flash");     // allows flash pop up messages
 
 var app = express();                                    // place express into app
 
@@ -34,6 +35,7 @@ var authRoutes          = require("./routes/auth");
 /* =============================== */
 app.set("view engine", "ejs");                          // this is so express knows all view files are defaulted .ejs
 app.use(methodOverride("_method"));                     // adding method indicator
+app.use(flash());
 
 // database connection
 mongoose.connect("mongodb://localhost/groupievents", {useMongoClient: true});
@@ -56,7 +58,9 @@ passport.deserializeUser(User.deserializeUser());
 
 // for all pages at all times, give the currentUser variable the req.user info
 app.use(function(req, res, next){                       // this is so user's info can be spread throughout all pages
-   res.locals.currentUser = req.user;                   // *** REALLY USEFUL FOR WHEN USERS ARE IN A SESSION ***
+   res.locals.currentUser       = req.user;             // *** REALLY USEFUL FOR WHEN USERS ARE IN A SESSION ***
+   res.locals.success           = req.flash("success");    // success flash message
+   res.locals.error             = req.flash("error");      // error flash message
    next();
 });
 

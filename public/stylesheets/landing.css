@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Pathway+Gothic+One');
+@import url('https://fonts.googleapis.com/css?family=Yantramanav:300');
+
+/* Give body and html 100% height */
+html, 
+body {
+    height: 100%;
+}
+
+/* Give HTML the background image and make sure it's centered/resizable */
+html {
+    background-image: url('https://static.pexels.com/photos/376533/pexels-photo-376533.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    overflow: auto;
+}
+
+/* Add overlay to the body which will give it a darker tint */
+#overlay {
+    z-index: 1;
+    content: '';
+    min-height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.6);
+}
+
+/* Force the items inside container to be centered */
+.container {
+    z-index: 5;
+    color: white;
+    text-align: center;
+    position: relative;
+    top: 25%;
+}
+
+/* Font stuff */
+h2 {
+    font-size: 45px;
+    font-family: 'Pathway Gothic One';
+}
+
+p {
+    font-size: 17px;
+    font-family: 'Yantramanav';
+}
+
+/* Link styling */
+a {
+    font-size: 15px;
+    font-family: 'Yantramanav';
+    padding: 7px;
+    color: white;
+    background-color: transparent;
+    border: solid 2px white;
+    box-shadow: none;
+    outline:none;
+}
+
+a:hover {
+    background: white;
+    color: #000;
+    text-decoration: none;
+}
+
+a:focus, a:visited, a:active, a:checked {
+    text-decoration: none;
+}

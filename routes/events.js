@@ -17,7 +17,7 @@ var User            = require("../models/user");
          We do NOT have to specifically say landing.ejs because we added an EJS packet to deal with that */
          
 router.get("/", function(req, res){
-   res.redirect("/events");
+   res.render("landing");
 });
 
 /* =============================== */

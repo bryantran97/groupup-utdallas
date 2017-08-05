@@ -1,0 +1,16 @@
+/* =============================== */
+/*          SPECIFIC EVENT         */
+/* =============================== */
+
+.thumbnail img {                        /* Allows images to fill the width of thumbnail */
+    width: 100%;
+}
+
+
+.thumbnail .caption-full {              /* Gives space for items to not touch borders */
+    padding: 9px;
+}
+
+#deleteForm {
+    display: inline;
+}

@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,800');
+
+.navbar {
+   margin-top: 15px;
+   background-color: transparent;
+   background: transparent;
+   border-color: transparent;
+}
+
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav>li>a
+{
+    color: #fff;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-nav>li>a:hover
+{
+    color: #d67c33;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: #d67c33;
+}
+
+/* =============================== */
+/*        EVENT LISTING PAGE       */
+/* =============================== */
+
+body {
+    font-family: 'Open Sans';
+}
+
+#eventlisting-images {
+    width: 100%;
+    height: 200px;
+}
+
+.container-fluid {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#banner {
+    width: 100%;
+    height: 500px;
+    text-align: center;
+     background: 
+    /* top, transparent black, faked with gradient */ 
+    linear-gradient(
+      rgba(0, 0, 0, 0.45), 
+      rgba(0, 0, 0, 0.45)
+    ),
+    /* bottom, image */
+    url(https://static.pexels.com/photos/325521/pexels-photo-325521.jpeg);
+    background-position: 50% 75%;
+    color: white;
+}

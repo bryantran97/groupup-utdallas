@@ -6,13 +6,13 @@
         <div style="width: 30%; margin: 30px auto;">
             <form action="/events" method="POST">
                 <div class="form-group">
-                    <input type="text" name="titleOfEvent" placeholder="Title of Event" class="form-control">
+                    <input type="text" name="titleOfEvent" placeholder="Title of Event" class="form-control" maxlength="30" required>
                 </div>
                 <div class="form-group">
                     <input type="text" name="imgURL" value="Disabled:NoExplicitMaterial" class="form-control" disabled>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="description" placeholder="describe event" class="form-control">
+                    <input type="text" name="description" placeholder="describe event" class="form-control" maxlength="450" required>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-lg btn-primary btn-block">Submit!</button>

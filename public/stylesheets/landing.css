@@ -4,12 +4,20 @@
 /* Give body and html 100% height */
 html, 
 body {
+    width: 100%;
     height: 100%;
 }
 
 /* Give HTML the background image and make sure it's centered/resizable */
-html {
-    background-image: url('https://static.pexels.com/photos/376533/pexels-photo-376533.jpeg');
+body {
+    background: 
+    /* top, transparent black, faked with gradient */ 
+    linear-gradient(
+      rgba(0, 0, 0, 0.7), 
+      rgba(0, 0, 0, 0.7)
+    ),
+    /* bottom, image */
+    url('https://images.pexels.com/photos/66086/pexels-photo-66086.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -22,15 +30,6 @@ html {
     max-height: 100%;
     margin: auto;
     overflow: auto;
-}
-
-/* Add overlay to the body which will give it a darker tint */
-#overlay {
-    z-index: 1;
-    content: '';
-    min-height: 100%;
-    width: 100%;
-    background-color: rgba(0,0,0,0.6);
 }
 
 /* Force the items inside container to be centered */
@@ -66,8 +65,9 @@ a {
 }
 
 a:hover {
-    background: white;
-    color: #000;
+    border-color: #d67c33;
+    background: #d67c33;
+    color: #fff;
     text-decoration: none;
 }
 

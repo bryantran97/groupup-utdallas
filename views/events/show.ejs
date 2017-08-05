@@ -22,12 +22,14 @@
                             <button class="btn btn-danger"> Delete </button>
                         </form>
                     <% } %>
-                </div>
-            </div>
+                </div> <!-- end of caption-full -->
+            </div> <!-- end of thumbnail -->
+            
+            
             <div class="well">
                 <div class="text-right">
                     <a class="btn btn-success" href="/events/<%= eventData._id %>/comments/new">Add A Comment</a>
-                </div>
+                </div> <!-- end of text-right -->
                 <hr>
                 <% eventData.comments.forEach(function(comment){ %>
                     <div class="row">
@@ -40,12 +42,12 @@
                                     <button class="btn btn-xs btn-danger">Delete</button>
                                 </form>
                             <% } %>
-                        </div>
-                    </div>
+                        </div> <!-- end of col-md-12 -->
+                    </div> <!-- end of row -->
                 <% }) %>
-            </div>
-        </div>
-    </div>
-</div>
+            </div> <!-- end of well -->
+        </div> <!-- end of col-md-9 -->
+    </div> <!-- end of row -->
+</div> <!-- end of container -->
 
 <% include ../partials/footer %>

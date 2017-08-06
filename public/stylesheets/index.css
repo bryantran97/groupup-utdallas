@@ -6,22 +6,21 @@
 body, html {
     width: 100%;
     height: 100%;
-    background-color: #eaeaea;
     font-family: 'Pathway Gothic One';
 }
 
 .navbar {
-   text-transform: uppercase;
-   margin-top: 15px;
-   background-color: transparent;
-   background: transparent;
-   border-color: transparent;
+    text-transform: uppercase;
+    margin-top: 15px;
+    background-color: transparent;
+    background: transparent;
+    border-color: transparent;
 }
 
 .navbar-default .navbar-brand,
 .navbar-default .navbar-nav>li>a
 {    
-    font-size: 17px;
+    font-size: 20px;
     color: #fff;
 }
 
@@ -48,12 +47,14 @@ a:active, a:focus, a:visited {
 /* =============================== */
 
 #title {
+    font-weight: bold;
     font-size: 40px;
     padding-top: 20px;
     padding-bottom: 20px;
 }
 
 #note {
+    font-weight: bold;
     padding: 0 30px;
 }
 
@@ -63,6 +64,7 @@ a:active, a:focus, a:visited {
 
 #events {
     margin-top: 75px;
+    background-color: #3d3d3d;
 }
 
 .thumbnail {
@@ -100,6 +102,35 @@ a:active, a:focus, a:visited {
     color: white;
 }
 
+/* =============================== */
+/*              MISSON             */
+/* =============================== */
+
+#mission {
+    background-color: white;
+    padding: 40px 0;
+    text-align: center;
+}
+
+#mission hr {
+    border-color: #b2b2b2;
+    padding-bottom: 30px;
+    width: 40%;
+}
+
+#deal p {
+    font-size: 26px;
+}
+
+#dealContent p {
+    font-size: 20px;
+    padding: 40px 0;
+}
+
+/* =============================== */
+/*               REVIEW            */
+/* =============================== */
+
 
 /* =============================== */
 /*              BUTTONS            */
@@ -113,10 +144,22 @@ a:active, a:focus, a:visited {
 
 #bannerBtns li{
     display: inline;
+    
 }
 
+#addEventBtn,
+#searchEventBtn,
+#moreInfoBtn {
+    -o-transition:.3s;
+    -ms-transition:.3s;
+    -moz-transition:.3s;
+    -webkit-transition:.3s;
+    /* ...and now for the proper property */
+    transition:.3s;
+}
 
 #addEventBtn {
+    font-size: 20px;
     margin-right: 8px;
     color: white;
     background-color: #d67c33;
@@ -130,6 +173,7 @@ a:active, a:focus, a:visited {
 }
 
 #searchEventBtn {
+    font-size: 20px;
     margin-left: 8px;
     color: white;
     background-color: #c44a4a;

@@ -38,6 +38,10 @@ body, html {
     background-color: #d67c33;
 }
 
+a:active, a:focus, a:visited {
+    text-decoration: none;
+}
+
 
 /* =============================== */
 /*              BANNER             */
@@ -46,6 +50,7 @@ body, html {
 #title {
     font-size: 40px;
     padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 #note {
@@ -100,25 +105,40 @@ body, html {
 /*              BUTTONS            */
 /* =============================== */
 
-
-#addEventLabel {
-    color: white;
-    padding-top: 25px;
+#bannerBtns ul{
+    margin-top: 40px;
+    padding: 0;
+    list-style-type: none;
 }
 
+#bannerBtns li{
+    display: inline;
+}
+
+
 #addEventBtn {
+    margin-right: 8px;
     color: white;
-    border: 2px solid #d67c33;
     background-color: #d67c33;
-    padding: 7px;
-    text-decoration: none;
+    padding: 16px;
+    border-radius: 3px;
 }
 
 #addEventBtn:hover {
-    color: #d67c33;
-    border: 2px solid white;
-    background-color: white;
-    padding: 7px;
+    background-color: #965724;
+    text-decoration: none;
+}
+
+#searchEventBtn {
+    margin-left: 8px;
+    color: white;
+    background-color: #c44a4a;
+    padding: 16px;
+    border-radius: 3px;
+}
+
+#searchEventBtn:hover {
+    background-color: #823131;
     text-decoration: none;
 }
 

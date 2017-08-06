@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Pathway+Gothic+One');
-@import url('https://fonts.googleapis.com/css?family=Yantramanav:300');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 
 /* Give body and html 100% height */
 html, 
@@ -17,11 +17,10 @@ body {
       rgba(0, 0, 0, 0.7)
     ),
     /* bottom, image */
-    url('https://images.pexels.com/photos/66086/pexels-photo-66086.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb');
+    url('/images/ssb.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
@@ -38,39 +37,61 @@ body {
     color: white;
     text-align: center;
     position: relative;
-    top: 25%;
+    top: 15%;
 }
 
 /* Font stuff */
-h2 {
-    font-size: 45px;
-    font-family: 'Pathway Gothic One';
+img {
+    width: 300px;
+    height: 300px;
+    
+    user-select: none;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -o-user-select: none;
 }
 
 p {
-    font-size: 17px;
-    font-family: 'Yantramanav';
+    font-weight: normal;
+    font-size: 15px;
+    font-family: 'Roboto';
+    padding-bottom: 20px;
 }
 
 /* Link styling */
-a {
+a { 
     font-size: 15px;
-    font-family: 'Yantramanav';
-    padding: 7px;
+    font-family: 'Roboto';
+    font-weight: bold;
+    padding: 12px 15px 12px 15px;
     color: white;
-    background-color: transparent;
-    border: solid 2px white;
+    background-color: #d67c33;
+    border-radius: 25px;
+    border: solid 2px #d67c33;
     box-shadow: none;
     outline:none;
 }
 
 a:hover {
-    border-color: #d67c33;
-    background: #d67c33;
-    color: #fff;
+    border-color: white;
+    color: white;
+    background: transparent;
+}
+
+a:focus, a:visited, a:active, a:checked, a:hover {
     text-decoration: none;
 }
 
-a:focus, a:visited, a:active, a:checked {
-    text-decoration: none;
+
+@media (max-height: 620px) {
+    .container {
+        top: 5%;
+    }
+    
+    img {
+        width: 200px;
+        height: 200px;
+    }
+
 }

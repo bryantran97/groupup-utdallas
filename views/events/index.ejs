@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>groupievents</title>
+        <title>GROUPUP</title>
         <!-- Bootstrap -->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link href="/stylesheets/index.css" rel="stylesheet">
@@ -24,7 +24,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-        			<a href="/" class="navbar-brand">groupievents</a>
+        			<a href="/" class="navbar-brand">GROUPUP</a>
         		</div>
         
         		<div class="collapse navbar-collapse" id="bs-nav-demo">
@@ -54,18 +54,31 @@
     <% } %>
     
         <header id="box">
-                <h2 id="title">Welcome to groupievents</h2>
+                <h2 id="title">Welcome to GroupUp</h2>
+                <h4>Events for UTDallas Students BY UTDallas Students</h4>
+                
+                <div id="bannerBtns">
+                    <ul>
+                        <li>
+                            <a href="/events/new" id="addEventBtn">POST AN EVENT</a>
+                        </li>
+                        <li>
+                            <a href="#" id="searchEventBtn">SEARCH EVENTS</a>
+                        </li>
+                    </ul>
+                </div>
                 <br />
-                <h4>View available events in Dallas</h4>
-                <h4 id="addEventLabel">
-                   <a href="/events/new" id="addEventBtn">POST AN EVENT</a>
-                </h4>
-                <br />
+                <!--
                 <h5 id="note">Note: Since so many people were posting inappropriate material I disabled image as an option.</h5>
+                -->
         </header>
     </div> <!-- end of container-fluid -->
     </div> <!-- end of banner -->
-        
+    
+    <div id="mission">
+        Our mission is to provide UTDallas students with fun event planning
+    </div>
+    
     <div id="events">
         <div class="container">
             <div class="row text-center" style="display:flex; flex-wrap: wrap;">

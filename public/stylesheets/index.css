@@ -63,8 +63,8 @@ a:active, a:focus, a:visited {
 /* =============================== */
 
 #events {
-    margin-top: 75px;
-    background-color: #3d3d3d;
+    padding-top: 50px;
+    background-color: #cecece;
 }
 
 .thumbnail {
@@ -124,13 +124,43 @@ a:active, a:focus, a:visited {
 
 #dealContent p {
     font-size: 20px;
-    padding: 40px 0;
+}
+
+.svgTitle {
+    font-size: 25px;
+    padding: 10px 0 15px 0;
+    color: #d16929;
 }
 
 /* =============================== */
 /*               REVIEW            */
 /* =============================== */
 
+#reviews h2 {
+    font-size: 26px;
+}
+
+#reviews p{
+    font-size: 20px;
+    padding: 20px 15px 0 15px;
+}
+
+#reviews h3 {
+    font-size: 25px;
+    padding-top: 10px;
+}
+
+#reviews hr {
+    border-color: #d8d6d6;
+    padding-bottom: 20px;
+    width: 30%;
+}
+
+#reviews img {
+    width: 125px;
+    height: 125px;
+    border-radius: 100px;
+}
 
 /* =============================== */
 /*              BUTTONS            */
@@ -197,8 +227,12 @@ a:active, a:focus, a:visited {
 
 @media (max-width: 991px) {
     #eventlisting-images {
-    width: 100%;
-    height:300px;
+        width: 100%;
+        height:300px;
     }
-
+    
+    #dealContent p {
+        font-size: 20px;
+        padding-bottom: 75px;
+    }
 }

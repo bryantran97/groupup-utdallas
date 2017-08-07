@@ -1,149 +1,157 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>GROUPUP</title>
-        <!-- Bootstrap -->
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link href="/stylesheets/index.css" rel="stylesheet">
-        <link rel="stylesheet" href="/stylesheets/gallery.theme.css">
-        <link rel="stylesheet" href="/stylesheets/gallery.css">
-        
-        <!-- Javascript -->
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-    </head>
-    <body>
-        
+
+<head>
+    <title>GroupUp @ UTD</title>
+    <!-- CSS LINKS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="/stylesheets/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/gallery.theme.css">
+    <link rel="stylesheet" href="/stylesheets/gallery.css">
+    <link rel="stylesheet" href="/stylesheets/../fontawesome/css/font-awesome.min.css">
+    <!-- Javascript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+</head>
+
+<body>
+    <!-- ============================================ -->
+    <!--                     BANNER                   -->
+    <!-- ============================================ -->
     <div id="banner">
-    <div class="container-fluid">
-        <div class="container">
-            <nav class="navbar navbar-default">
-        		<div class="navbar-header">
-        			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-        			<a href="/" class="navbar-brand">GROUPUP</a>
-        		</div>
-        
-        		<div class="collapse navbar-collapse" id="bs-nav-demo">
-        		<ul class="nav navbar-nav navbar-right">
-                    <% if(!currentUser){ %>
-                        <li><a href="/login">Login</a></li>
-                        <li><a href="/register">Register</a></li>
-                    <% } else { %>
-                        <li><a href="/events">Signed in as: <%= currentUser.username %></a></li>
-                        <li><a href="/logout">Logout</a></li>
-                    <% } %>
-        		</ul>
-        		</div>
-        	</nav>
-    	</div>
-    
-    <% if(error && error.length > 0) { %>
-    <div class="container">
-        <div class="alert alert-danger" role="alert"><%= error %></div>    
-    </div>
-    <% } %>
-    
-    <% if(success && success.length > 0) { %>
-    <div class="container">
-        <div class="alert alert-success" role="alert"><%= success %></div>    
-    </div>
-    <% } %>
-    
-        <header id="box">
-                <h2 id="title">Welcome to GroupUp</h2>
-                <h4>Events for UTDallas Students BY UTDallas Students</h4>
-                
-                <div id="bannerBtns">
-                    <ul>
-                        <li>
-                            <a href="/events/new" id="addEventBtn">POST AN EVENT</a>
-                        </li>
-                        <li>
-                            <a href="#" id="searchEventBtn">SEARCH EVENTS</a>
-                        </li>
-                    </ul>
+        <div class="container-fluid">
+            <div class="container">
+                <nav class="navbar navbar-default">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="/" class="navbar-brand">GROUPUP</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-nav-demo">
+                        <ul class="nav navbar-nav navbar-right">
+                            <% if(!currentUser){ %>
+                                <li><a href="/login" class="nav-link">Login</a></li>
+                                <li><a href="/register"class="nav-link">Register</a></li>
+                                <% } else { %>
+                                    <li><a href="/events">Signed in as: <%= currentUser.username %></a></li>
+                                    <li><a href="/logout">Logout</a></li>
+                                    <% } %>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <% if(error && error.length > 0) { %>
+                <div class="container">
+                    <div class="alert alert-danger" role="alert">
+                        <%= error %>
+                    </div>
                 </div>
-                <br />
-                <!--
-                <h5 id="note">Note: Since so many people were posting inappropriate material I disabled image as an option.</h5>
-                -->
-        </header>
-    </div> <!-- end of container-fluid -->
-    </div> <!-- end of banner -->
-    
+                <% } %>
+                    <% if(success && success.length > 0) { %>
+                        <div class="container">
+                            <div class="alert alert-success" role="alert">
+                                <%= success %>
+                            </div>
+                        </div>
+                        <% } %>
+                            <header>
+                                <h2 class="title">Welcome to GroupUp</h2>
+                                <h4>Events for UTDallas Students BY UTDallas Students</h4>
+                                <div class="bannerBtns">
+                                    <ul>
+                                        <li>
+                                            <a href="/events/new" class="add-event-button">POST AN EVENT</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="search-event-button">SEARCH EVENTS</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <br />
+                            </header>
+        </div>
+        <!-- end of container-fluid -->
+    </div>
+    <!-- end of banner -->
+
+    <!-- ============================================ -->
+    <!--                    MISSION                   -->
+    <!-- ============================================ -->
     <div id="mission">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="deal">
-                    <p>What's the dealio?<p>
-                    <hr>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mission-header">
+                    <p>What's the dealio?
+                        <p>
+                            <hr>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" id="dealContent">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mission-content">
                     <object width="100" height="100" type="image/svg+xml" data="/svg/post.svg">
-                    Your browser does not support SVG
+                        Your browser does not support SVG
                     </object>
-                    <h4 class="svgTitle">Visit and use the site</h4>
+                    <h4 class="svg-title">Visit and use the site</h4>
                     <p>Register, log in, create new event postings, and comment. Gather friends or check out a post and attend an event.</p>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" id="dealContent">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mission-content">
                     <object width="100" height="100" type="image/svg+xml" data="/svg/connect.svg">
-                    Your browser does not support SVG
+                        Your browser does not support SVG
                     </object>
-                    <h4 class="svgTitle">Meet new people</h4>
+                    <h4 class="svg-title">Meet new people</h4>
                     <p>Hand out and talk to new people. Connect and make new life-long friends. Experience something great.</p>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" id="dealContent">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mission-content">
                     <object width="100" height="100" type="image/svg+xml" data="/svg/stayconnected.svg">
-                    Your browser does not support SVG
+                        Your browser does not support SVG
                     </object>
-                    <h4 class="svgTitle">Stay connected and REPEAT</h4>
+                    <h4 class="svg-title">Stay connected and REPEAT</h4>
                     <p>Check out the website for new postings but be sure to stay connected with your new friends!</p>
                 </div>
             </div>
         </div>
     </div>
-    
+
+    <!-- ============================================ -->
+    <!--                    REVIEWS                   -->
+    <!-- ============================================ -->
     <div id="reviews">
         <div class="gallery items-3">
-          <div id="item-1" class="control-operator"></div>
-          <div id="item-2" class="control-operator"></div>
-          <div id="item-3" class="control-operator"></div>
-        
+            <div id="item-1" class="control-operator"></div>
+            <div id="item-2" class="control-operator"></div>
+            <div id="item-3" class="control-operator"></div>
             <figure class="item">
                 <h2>Word around the block</h2>
                 <p>– ❤ –</p>
                 <br />
                 <img src="images/me.png">
                 <p>"This site is awesome, I've made a bunch of new friends that I know I'll be hanging out with for a long time!"
-                <h3>- Bryan Tran</h3>
+                    <h3>- Bryan Tran</h3>
             </figure>
-        
             <figure class="item">
                 <h2>Word around the block</h2>
                 <p>– ❤ –</p>
                 <br />
                 <img src="images/mario.png">
-                <p>"It'sa me Mar- I mean *ahem* Nario! I met my friend Princess Nectarine through this website, it'sa amazing."<br />Q: Why<br /> A: Yes</p>
+                <p>"It'sa me Mar- I mean *ahem* Nario! I met my friend Princess Nectarine through this website, it'sa amazing."
+                    <br />Q: Why
+                    <br /> A: Yes</p>
                 <h3>- Nario Mario</h3>
             </figure>
-        
             <figure class="item">
                 <h2>Word around the block</h2>
                 <p>– ❤ –</p>
                 <br />
                 <img src="images/johnsnow.png">
-                <p>"I'm king of the north even though I don't want to be. Even so, I met some great people and loyal members of House Stark here. <br /> The north remembers!"</p>
+                <p>"I'm king of the North East even though I don't want to be. Even so, I met some great people and loyal members of House Stork here.
+                    <br /> The North East remembers!"</p>
                 <h3>- Bryent Snow</h3>
             </figure>
-        
             <div class="controls">
                 <a href="#item-1" class="control-button">•</a>
                 <a href="#item-2" class="control-button">•</a>
@@ -151,25 +159,80 @@
             </div>
         </div>
     </div>
-    
+
+    <!-- ============================================ -->
+    <!--                     EVENTS                   -->
+    <!-- ============================================ -->
     <div id="events">
         <div class="container">
+            <h2>Current event listings</h2>
+            <p>Remember to have some tact! Don't ruin the experience for others</p>
             <div class="row text-center" style="display:flex; flex-wrap: wrap;">
                 <% listOfEvents.forEach(function(event){ %>
-                    <div class="col-md-3 col-sm-6">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="thumbnail">
-                            <img id="eventlisting-images" src="<%= event.image %>">
-                            <div class="caption>"><h4><%= event.title.substring(0,30) %></h4></div>
+                            <img class="eventlisting-images" src="<%= event.image %>">
+                            <div class="caption>">
+                                <h4><%= event.title.substring(0,30) %></h4>
+                            </div>
                             <div>
                                 <p>
-                                    <a href="/events/<%=event._id %>" id="moreInfoBtn">MORE INFO</a>
+                                    <a href="/events/<%=event._id %>" class="more-info-button">MORE INFO</a>
                                 </p>
                             </div>
                         </div>
                     </div>
-                <% }); %>
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of events -->
+                    <% }); %>
+            </div>
+            <!-- end of row -->
+        </div>
+        <!-- end of container -->
+    </div>
+    <!-- end of events -->
 
-<% include ../partials/footer %>
+    <!-- ============================================ -->
+    <!--                     FOOTER                   -->
+    <!-- ============================================ -->
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs 12 left-col">
+                    <h2>GroupUP @ UTDallas</h2>
+                    <p>New to UTD? A student coming back for the new semester? It doesn't matter who you are, GroupUP is your answer to finding new friends and new experiences at this University. If you struggle with finding cool parties to go to then worry not, we're here to help.
+                    </p>
+                    <p>&copy; GroupUpUTD</p>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 right-col">
+                    <ul class="list-of-links">
+                        <li>
+                            <h2>Links</h2></li>
+                        <li><a>UTD Health Center</a></li>
+                        <li><a>Campus Counseling Center</a></li>
+                        <li><a>Login</a></li>
+                        <li><a>Register</a></li>
+                        <li><a>Taco</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 right-col">
+                    <ul class="list-of-social-medias">
+                        <li>
+                            <h2>Follow us @</h2></li>
+                        <li><a><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+                        <li><a><i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter </a></li>
+                        <li><a><i class="fa fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+                        <li><a><i class="fa fa-pinterest-square" aria-hidden="true"></i> Pinterest</a></li>
+                        <li><a><i class="fa fa-reddit-square" aria-hidden="true"></i> Reddit</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs 12 shameless-plugin">
+                    <p>Website made with ❤ by Bryan Tran </p>
+                    <p><a href="https://github.com/bryantran97" target="_blank">Github</a> | <a href="https://linkedin.com/in/bryantran97" target="_blank">LinkedIn</a> | <a href="http://bryan-tran.com" target="_blank">Portfolio</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <% include ../partials/footer %>

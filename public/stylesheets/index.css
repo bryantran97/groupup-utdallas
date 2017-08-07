@@ -1,13 +1,28 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,800');
 @import url('https://fonts.googleapis.com/css?family=Pathway+Gothic+One');
-@import url('https://fonts.googleapis.com/css?family=Gochi+Hand');
 /* #d67c33 = ORANGE */
+/* =============================== */
+/*              GLOBALS            */
+/* =============================== */
 
-body, html {
+body,
+html {
     width: 100%;
     height: 100%;
     font-family: 'Pathway Gothic One';
 }
+a:active,
+a:focus,
+a:visited {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+/* =============================== */
+/*              NAVBAR             */
+/* =============================== */
 
 .navbar {
     text-transform: uppercase;
@@ -16,92 +31,94 @@ body, html {
     background: transparent;
     border-color: transparent;
 }
-
 .navbar-default .navbar-brand,
-.navbar-default .navbar-nav>li>a
-{    
+.navbar-default .navbar-nav>li>a {
     font-size: 20px;
     color: #fff;
 }
 
 .navbar-default .navbar-brand:hover,
-.navbar-default .navbar-nav>li>a:hover
-{
+.navbar-default .navbar-nav>li>a:hover {
     color: #d67c33;
+    -o-transition: .3s;
+    -ms-transition: .3s;
+    -moz-transition: .3s;
+    -webkit-transition: .3s;
+    /* ...and now for the proper property */
+    
+    transition: .3s;
 }
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #fff;
 }
-
-.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+.navbar-default .navbar-toggle:focus,
+.navbar-default .navbar-toggle:hover {
     background-color: #d67c33;
 }
-
-a:active, a:focus, a:visited {
-    text-decoration: none;
-}
-
-
 /* =============================== */
 /*              BANNER             */
 /* =============================== */
-
-#title {
-    font-weight: bold;
-    font-size: 40px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
-#note {
-    font-weight: bold;
-    padding: 0 30px;
-}
-
-/* =============================== */
-/*        EVENT LISTING PAGE       */
-/* =============================== */
-
-#events {
-    padding-top: 50px;
-    background-color: #cecece;
-}
-
-.thumbnail {
-    font-family: 'Gochi Hand';
-    background-color: white;
-    padding: 15px;
-    border-radius: 0;
-}
-
-#eventlisting-images {
-    width: 100%;
-    height: 200px;
-    background-color: black;
-}
 
 .container-fluid {
     width: 100%;
     margin: 0;
     padding: 0;
 }
-
 #banner {
     width: 100%;
     height: 500px;
     text-align: center;
-    background: 
-    /* top, transparent black, faked with gradient */ 
-    linear-gradient(
-      rgba(0, 0, 0, 0.54), 
-      rgba(0, 0, 0, 0.54)
-    ),
+    background:
+    /* top, transparent black, faked with gradient */
+    
+    linear-gradient( rgba(0, 0, 0, 0.54), rgba(0, 0, 0, 0.54)),
     /* bottom, image */
+    
     url(https://static.pexels.com/photos/325521/pexels-photo-325521.jpeg);
     background-position: 50% 75%;
+    background-size: cover;
     color: white;
 }
+.title {
+    font-weight: bold;
+    font-size: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.note {
+    font-weight: bold;
+    padding: 0 30px;
+}
+/* =============================== */
+/*        EVENT LISTING PAGE       */
+/* =============================== */
 
+#events {
+    padding: 50px 0 75px 0;
+    background-color: #cecece;
+    text-align: center;
+}
+#events h2 {
+    font-weight: bold;
+    font-size: 29px;
+}
+#events h4 {
+    padding-top: 25px;
+}
+#events p {
+    padding-bottom: 50px;
+    font-size: 19px;
+}
+.thumbnail {
+    background-color: white;
+    padding: 15px;
+    border-radius: 0;
+}
+.thumbnail .eventlisting-images {
+    width: 100%;
+    height: 200px;
+    background-color: black;
+}
 /* =============================== */
 /*              MISSON             */
 /* =============================== */
@@ -111,84 +128,110 @@ a:active, a:focus, a:visited {
     padding: 40px 0;
     text-align: center;
 }
-
 #mission hr {
     border-color: #b2b2b2;
     padding-bottom: 30px;
     width: 40%;
 }
-
-#deal p {
+.mission-header p {
     font-size: 26px;
 }
-
-#dealContent p {
+.mission-content p {
     font-size: 20px;
 }
-
-.svgTitle {
+.svg-title {
     font-size: 25px;
     padding: 10px 0 15px 0;
     color: #d16929;
 }
-
 /* =============================== */
 /*               REVIEW            */
 /* =============================== */
 
-#reviews h2 {
-    font-size: 26px;
-}
-
-#reviews p{
+#reviews p {
     font-size: 20px;
     padding: 20px 15px 0 15px;
 }
-
 #reviews h3 {
     font-size: 25px;
     padding-top: 10px;
 }
-
 #reviews hr {
     border-color: #d8d6d6;
     padding-bottom: 20px;
     width: 30%;
 }
-
 #reviews img {
     width: 125px;
     height: 125px;
     border-radius: 100px;
 }
+/* =============================== */
+/*              FOOTER             */
+/* =============================== */
 
+#footer {
+    font-family: 'Open Sans';
+    padding: 40px 0 40px 0;
+    color: white;
+    background-color: #333333;
+}
+#footer .left-col {
+    text-align: left;
+}
+#footer h2 {
+    font-size: 20px;
+    font-weight: bold;
+}
+#footer p {
+    font-size: 16px;
+}
+#footer .right-col {
+    text-align: left;
+}
+
+
+.list-of-links li {
+    padding-bottom: 5px;
+}
+
+.list-of-social-medias li {
+    padding-bottom: 9px;
+    cursor: pointer;
+}
+
+.list-of-links a,
+.list-of-social-medias a{
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+.list-of-links a:hover ,
+.list-of-social-medias a:hover{
+    text-decoration: none;
+    color: white;
+}
+
+.shameless-plugin {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+}
 /* =============================== */
 /*              BUTTONS            */
 /* =============================== */
+/* Banner Button CSS */
 
-#bannerBtns ul{
+.bannerBtns ul {
     margin-top: 40px;
     padding: 0;
     list-style-type: none;
 }
-
-#bannerBtns li{
+.bannerBtns li {
     display: inline;
-    
 }
-
-#addEventBtn,
-#searchEventBtn,
-#moreInfoBtn {
-    -o-transition:.3s;
-    -ms-transition:.3s;
-    -moz-transition:.3s;
-    -webkit-transition:.3s;
-    /* ...and now for the proper property */
-    transition:.3s;
-}
-
-#addEventBtn {
+.add-event-button {
     font-size: 20px;
     margin-right: 8px;
     color: white;
@@ -196,13 +239,12 @@ a:active, a:focus, a:visited {
     padding: 16px;
     border-radius: 3px;
 }
-
-#addEventBtn:hover {
+.add-event-button:hover {
     background-color: #965724;
     text-decoration: none;
+    color: white;
 }
-
-#searchEventBtn {
+.search-event-button {
     font-size: 20px;
     margin-left: 8px;
     color: white;
@@ -210,29 +252,70 @@ a:active, a:focus, a:visited {
     padding: 16px;
     border-radius: 3px;
 }
-
-#searchEventBtn:hover {
+.search-event-button:hover {
     background-color: #823131;
+    color: white;
     text-decoration: none;
 }
+.search-event-button:visited,
+.search-event-button:active,
+.search-event-button:focus{
+    color: white;
+    text-decoration: none;
+}
+/* Event listing buttons */
 
-#moreInfoBtn {
+.more-info-button {
     color: red;
     text-decoration: none;
 }
+.more-info-button:hover {
+    text-decoration: none;
+    color: #d67c33;
+}
+/* Animation Transition */
 
+.add-event-button,
+.search-event-button,
+.more-info-button {
+    -o-transition: .3s;
+    -ms-transition: .3s;
+    -moz-transition: .3s;
+    -webkit-transition: .3s;
+    /* ...and now for the proper property */
+    
+    transition: .3s;
+}
+
+.alert {
+    font-family: 'Pathway Gothic One';
+    text-align:center;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
 /* =============================== */
 /*            MEDIA QUERIES        */
 /* =============================== */
 
 @media (max-width: 991px) {
-    #eventlisting-images {
+    .thumbnail .eventlisting-images {
         width: 100%;
-        height:300px;
+        height: 300px;
+        background-color: black;
     }
-    
-    #dealContent p {
+    .mission-content p {
         font-size: 20px;
         padding-bottom: 75px;
     }
+    .list-of-links {
+        padding-left: 0;
+        margin-left: 0;
+    }
+    .list-of-social-medias {
+        color: white;
+        cursor: pointer;
+        padding-left: 0;
+        margin-left: 0;
+    }
+
 }

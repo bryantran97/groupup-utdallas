@@ -28,7 +28,7 @@ router.post("/register", function(req, res){
         }
         // if there's no issue, it'll authenticate it and if authenticated, it'll return you to the events page
         passport.authenticate("local")(req, res, function(){
-            req.flash("success", "Welcome to groupievents " + user.username + ". Read the RULES first before posting! - Bryan");
+            req.flash("success", "Welcome to GroupUp " + user.username + ". Read the RULES first before posting! - Bryan");
             res.redirect("/events"); 
         });
     })

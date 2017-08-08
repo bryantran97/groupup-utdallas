@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/stylesheets/gallery.css">
     <link rel="stylesheet" href="/stylesheets/../fontawesome/css/font-awesome.min.css">
     <link rel="icon" type="image/png" href="/../images/favicon.png" />
+    <link href="/stylesheets/animate.css" rel="stylesheet">
     <!-- Javascript -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -23,7 +24,7 @@
     <div id="banner">
         <div class="container-fluid">
             <div class="container">
-                <nav class="navbar navbar-default">
+                <nav class="navbar navbar-default" id="navbar">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
                             <span class="sr-only">Toggle navigation</span>
@@ -237,10 +238,26 @@
     </div>
 
     <script>
+    $(document).ready(function(){
+        /* Scroll event animation */
         $(".search-event-button").click(function() {
             $('html, body').animate({
                 scrollTop: $("#events").offset().top
             }, 800);
         });
+        
+        $('body').addClass('animated fadeIn');
+        
+        /* Pop out nav-bar */
+        $(window).scroll(function(){
+            if ($(window).scrollTop() > 87) {
+                $('#navbar').addClass('navbar-fixed-top');
+            }
+            
+            if ($(window).scrollTop() < 88) {
+                $('#navbar').removeClass('navbar-fixed-top');
+            }
+        });
+    });
     </script>
     <% include ../partials/footer %>

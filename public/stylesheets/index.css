@@ -55,6 +55,18 @@ li {
 .navbar-default .navbar-toggle:hover {
     background-color: #d67c33;
 }
+
+.navbar-fixed-top {
+    background-color: rgba(0,0,0,0.5);
+    top: 0;
+    z-index: 100;
+    position: fixed;
+    width: 100%;
+    padding: 0 50px;
+    margin: auto;
+    
+    transition: all .3s;
+}
 /* =============================== */
 /*              BANNER             */
 /* =============================== */

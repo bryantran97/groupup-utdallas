@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/stylesheets/gallery.theme.css">
     <link rel="stylesheet" href="/stylesheets/gallery.css">
     <link rel="stylesheet" href="/stylesheets/../fontawesome/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="/../images/favicon.png" />
     <!-- Javascript -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -36,7 +37,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <% if(!currentUser){ %>
                                 <li><a href="/login" class="nav-link">Login</a></li>
-                                <li><a href="/register"class="nav-link">Register</a></li>
+                                <li><a href="/register" class="nav-link">Register</a></li>
                                 <% } else { %>
                                     <li><a href="/events">Signed in as: <%= currentUser.username %></a></li>
                                     <li><a href="/logout">Logout</a></li>
@@ -235,4 +236,11 @@
         </div>
     </div>
 
+    <script>
+        $(".search-event-button").click(function() {
+            $('html, body').animate({
+                scrollTop: $("#events").offset().top
+            }, 800);
+        });
+    </script>
     <% include ../partials/footer %>

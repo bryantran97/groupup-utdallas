@@ -1,31 +1,86 @@
 <% include ../partials/header %>
 
-<div class="container">
-    <div class="row">
-    <h1 style="text-align: center;">Editing <%= eventData.title %></h1>
-        <div style="width: 30%; margin: 30px auto;">
+    <div class="container">
+        <div class="row edit-form">
+            <h2>Editing <%= eventData.title %></h2>
+            <p>Aww yiss, editing some information? I'm sure you know how to edit a post. Go on.</p>
 
-            <form action="/events/<%= eventData._id %>/?_method=PUT" method="POST">
-                <div class="form-group">
-                    <input type="text" name="event[title]" value="<%= eventData.title %>" class="form-control" maxlength="30">
+            <div class="jumbotron edit-jumbotron">
+                <form action="/events/<%= eventData._id %>/?_method=PUT" method="POST">
+                    <div class="form-group">
+                        <h2 id="label">Give a new title</h2>
+                        <input type="text" name="event[title]" value="<%= eventData.title %>" class="form-control" maxlength="30">
+                    </div>
+                    <% if(currentUser && currentUser.username == "bryantran97") { %>
+                        <div class="form-group">
+                            <input type="text" name="event[image]" value="<%= eventData.image%>" class="form-control">
+                        </div>
+                        <% } %>
+                            <div class="form-group">
+                                <h2 id="label">Change Image URL</h2>
+                                <input type="text" name="event[image]" value="<%= eventData.image%>" placeholder="Disabled:NoExplicitMaterial" class="form-control" disabled>
+                            </div>
+                            <div class="form-group">
+                                <h2 id="label">RE-edit your Description</h2>
+                                <textarea name="event[description]" value="<%= eventData.description%>" maxlength="450" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                            </div>
+                </form>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 rules-content">
+                    <a class="return-link" href="/events">Return to main page</a>
                 </div>
-                <% if(currentUser && currentUser.username == "bryantran97") { %>
-                <div class="form-group">
-                    <input type="text" name="event[image]" value="<%= eventData.image%>" class="form-control">
-                </div>
-                <% } %>
-                <div class="form-group">
-                    <input type="text" name="event[image]" value="<%= eventData.image%>" placeholder="Disabled:NoExplicitMaterial" class="form-control" disabled>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="event[description]" value="<%= eventData.description%>" maxlength="450" class="form-control">
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
-                </div>
-            </form>
-            <a href="/events">Go back</a>
+            </div>
         </div>
     </div>
-</div>
-<% include ../partials/footer %>
+
+    <!-- ============================================ -->
+    <!--                     FOOTER                   -->
+    <!-- ============================================ -->
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs 12 left-col">
+                    <h2>GroupUP @ UTDallas</h2>
+                    <p>New to UTD? A student coming back for the new semester? It doesn't matter who you are, GroupUP is your answer to finding new friends and new experiences at this University. If you struggle with finding cool parties to go to then worry not, we're here to help.
+                    </p>
+                    <p>&copy; GroupUpUTD</p>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 right-col">
+                    <ul class="list-of-links">
+                        <li>
+                            <h2>Links</h2></li>
+                        <li><a>UTD Health Center</a></li>
+                        <li><a>Campus Counseling Center</a></li>
+                        <li><a>Login</a></li>
+                        <li><a>Register</a></li>
+                        <li><a>Taco</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 right-col">
+                    <ul class="list-of-social-medias">
+                        <li>
+                            <h2>Follow us @</h2></li>
+                        <li><a><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+                        <li><a><i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter </a></li>
+                        <li><a><i class="fa fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+                        <li><a><i class="fa fa-pinterest-square" aria-hidden="true"></i> Pinterest</a></li>
+                        <li><a><i class="fa fa-reddit-square" aria-hidden="true"></i> Reddit</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs 12 shameless-plugin">
+                    <p>Website made with ❤ by Bryan Tran </p>
+                    <p><a href="https://github.com/bryantran97" target="_blank">Github</a> | <a href="https://linkedin.com/in/bryantran97" target="_blank">LinkedIn</a> | <a href="http://bryan-tran.com" target="_blank">Portfolio</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <% include ../partials/footer %>

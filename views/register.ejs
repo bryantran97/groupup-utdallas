@@ -4,7 +4,7 @@
         <div class="jumbotron login-jumbotron">
             <h1>Register</h1>
             <hr>
-            <form class="form-group" action="/register" method="POST">
+            <form class="form-group register-form" action="/register" method="POST">
                 <h2 id="label">Your desired Username</h2>
                 <input type="text" name="username" placeholder="username" class="form-control">
                 <h2 id="label">Your Password</h2>
@@ -12,50 +12,56 @@
                 <button class="submit-register">Sign Up</button>
             </form>
         </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 rules-content">
+                <a class="return-link" href="/events">Return to main page</a>
+            </div>
+        </div>
     </div>
 
-        <!-- ============================================ -->
-        <!--                     FOOTER                   -->
-        <!-- ============================================ -->
-        <div id="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs 12 left-col">
-                        <h2>GroupUP @ UTDallas</h2>
-                        <p>New to UTD? A student coming back for the new semester? It doesn't matter who you are, GroupUP is your answer to finding new friends and new experiences at this University. If you struggle with finding cool parties to go to then worry not, we're here to help.
-                        </p>
-                        <p>&copy; GroupUpUTD</p>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 right-col">
-                        <ul class="list-of-links">
-                            <li>
-                                <h2>Links</h2></li>
-                            <li><a>UTD Health Center</a></li>
-                            <li><a>Campus Counseling Center</a></li>
-                            <li><a>Login</a></li>
-                            <li><a>Register</a></li>
-                            <li><a>Taco</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 right-col">
-                        <ul class="list-of-social-medias">
-                            <li>
-                                <h2>Follow us @</h2></li>
-                            <li><a><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
-                            <li><a><i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter </a></li>
-                            <li><a><i class="fa fa-instagram" aria-hidden="true"></i> Instagram</a></li>
-                            <li><a><i class="fa fa-pinterest-square" aria-hidden="true"></i> Pinterest</a></li>
-                            <li><a><i class="fa fa-reddit-square" aria-hidden="true"></i> Reddit</a></li>
-                        </ul>
-                    </div>
+    <!-- ============================================ -->
+    <!--                     FOOTER                   -->
+    <!-- ============================================ -->
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs 12 left-col">
+                    <h2>GroupUP @ UTDallas</h2>
+                    <p>New to UTD? A student coming back for the new semester? It doesn't matter who you are, GroupUP is your answer to finding new friends and new experiences at this University. If you struggle with finding cool parties to go to then worry not, we're here to help.
+                    </p>
+                    <p>&copy; GroupUpUTD</p>
                 </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 right-col">
+                    <ul class="list-of-links">
+                        <li>
+                            <h2>Links</h2></li>
+                        <li><a>UTD Health Center</a></li>
+                        <li><a>Campus Counseling Center</a></li>
+                        <li><a>Login</a></li>
+                        <li><a>Register</a></li>
+                        <li><a>Taco</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 right-col">
+                    <ul class="list-of-social-medias">
+                        <li>
+                            <h2>Follow us @</h2></li>
+                        <li><a><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+                        <li><a><i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter </a></li>
+                        <li><a><i class="fa fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+                        <li><a><i class="fa fa-pinterest-square" aria-hidden="true"></i> Pinterest</a></li>
+                        <li><a><i class="fa fa-reddit-square" aria-hidden="true"></i> Reddit</a></li>
+                    </ul>
+                </div>
+            </div>
 
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs 12 shameless-plugin">
-                        <p>Website made with ❤ by Bryan Tran </p>
-                        <p><a href="https://github.com/bryantran97" target="_blank">Github</a> | <a href="https://linkedin.com/in/bryantran97" target="_blank">LinkedIn</a> | <a href="http://bryan-tran.com" target="_blank">Portfolio</a></p>
-                    </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs 12 shameless-plugin">
+                    <p>Website made with ❤ by Bryan Tran </p>
+                    <p><a href="https://github.com/bryantran97" target="_blank">Github</a> | <a href="https://linkedin.com/in/bryantran97" target="_blank">LinkedIn</a> | <a href="http://bryan-tran.com" target="_blank">Portfolio</a></p>
                 </div>
             </div>
         </div>
+    </div>
     <% include ./partials/footer %>

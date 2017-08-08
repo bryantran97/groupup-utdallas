@@ -1,17 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,800');
 @import url('https://fonts.googleapis.com/css?family=Pathway+Gothic+One');
 @import url('https://fonts.googleapis.com/css?family=Anton');
-
 html,
 body {
     height: 100%;
     width: 100%;
 }
-
-
 /* =============================== */
 /*              NAVBAR             */
 /* =============================== */
+
 .navbar {
     font-family: 'Pathway Gothic One';
     text-transform: uppercase;
@@ -26,11 +24,9 @@ body {
     font-size: 20px;
     color: #d67c33;
 }
-
 .brand-name {
     padding-left: 0;
 }
-
 .navbar-right li a {
     padding-right: 0;
 }
@@ -52,7 +48,6 @@ body {
 .navbar-default .navbar-toggle:hover {
     background-color: #fff;
 }
-
 /* =============================== */
 /*           LOGIN/REGISTER        */
 /* =============================== */
@@ -62,30 +57,25 @@ body {
     text-align: center;
     margin-bottom: 180px;
 }
-
 .login-jumbotron h1 {
     font-family: 'Anton';
     text-transform: uppercase;
     font-size: 40px;
 }
-
 .login-jumbotron hr {
     width: 40%;
-    padding-bottom: 55px;
 }
-
 #label {
     text-align: left;
     font-family: 'Open Sans';
     font-size: 18px;
     text-transform: uppercase;
 }
-
-form {
+.login-form,
+.register-form {
     width: 50%;
     margin: 0 25% 0 25%;
 }
-
 .submit {
     font-family: 'Open Sans';
     background-color: #39ad65;
@@ -97,11 +87,9 @@ form {
     border-radius: 5px;
     text-transform: uppercase;
 }
-
 .submit:hover {
     border-color: #267042;
     background-color: #267042;
-
     -o-transition: .3s;
     -ms-transition: .3s;
     -moz-transition: .3s;
@@ -110,8 +98,7 @@ form {
     
     transition: .3s;
 }
-
-.submit-register{
+.submit-register {
     font-family: 'Open Sans';
     background-color: #c17232;
     margin-top: 50px;
@@ -122,11 +109,9 @@ form {
     border-radius: 5px;
     text-transform: uppercase;
 }
-
 .submit-register:hover {
     border-color: #ad5929;
     background-color: #ad5929;
-
     -o-transition: .3s;
     -ms-transition: .3s;
     -moz-transition: .3s;
@@ -136,22 +121,134 @@ form {
     transition: .3s;
 }
 /* =============================== */
+/*             NEW EVENT           */
+/* =============================== */
+
+.new-event-title h2 {
+    margin-top: 35px;
+    font-family: 'Open Sans';
+    font-weight: bold;
+    text-align: center;
+}
+.new-event-title p {
+    margin-top: 20px;
+    font-size: 15px;
+    font-family: 'Open Sans';
+    text-align: center;
+}
+.rules {
+    margin-top: 23px;
+    font-size: 18px;
+    font-family: 'Open Sans';
+    text-align: center;
+}
+.rules-content {
+    font-family: "Open Sans";
+    margin: 30px 0;
+    text-align: center;
+}
+.new-event-form {
+    width: 80%;
+    margin: 0 10% 50px 10%;
+}
+.return-link {
+    color: #777777;
+    text-align: center;
+    font-family: "Open Sans";
+    text-transform: uppercase;
+}
+.new-event-submit {
+    margin-top: 30px;
+    font-family: 'Open Sans';
+}
+/* =============================== */
+/*            EDIT EVENT           */
+/* =============================== */
+
+.edit-form {
+    font-family: "Open Sans";
+    text-align: center;
+}
+.edit-form p {
+    padding: 15px 20px 20px 20px;
+}
+.edit-jumbotron {
+    width: 70%;
+    margin: 40px 15%;
+}
+/* =============================== */
 /*          SPECIFIC EVENT         */
 /* =============================== */
 
-.thumbnail img { /* Allows images to fill the width of thumbnail */
+a:hover,
+a:active,
+a:focus,
+a:visited {
+    text-decoration: none;
+}
+.lead,
+.list-group-item {
+    font-size: 15px;
+    text-align: center;
+}
+.show-page-container {
+    margin-top: 30px;
+}
+.thumbnail {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+.thumbnail img {
+    /* Allows images to fill the width of thumbnail */
+    
     width: 100%;
 }
-
-
-.thumbnail .caption-full { /* Gives space for items to not touch borders */
+.thumbnail .caption-full {
+    /* Gives space for items to not touch borders */
+    
     padding: 9px;
 }
-
+p.pull-right {
+    margin: 10px 0 10px 0;
+}
 #deleteForm {
     display: inline;
 }
+.well {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 100px;
+}
+/* =============================== */
+/*            ADD  COMMENT         */
+/* =============================== */
 
+.new-comment-form {
+    font-family: 'Open Sans';
+    text-align: center;
+    width: 70%;
+    margin: 0 15%;
+}
+#comment-note {
+    font-size: 13px;
+}
+.new-comment-title {
+    padding-bottom: 50px;
+}
+.return-back {
+    text-transform: uppercase;
+}
+/* =============================== */
+/*            EDIT COMMENT         */
+/* =============================== */
+
+.edit-comment-form {
+    font-family: "Open Sans";
+    width: 70%;
+    margin: 0 15% 0 15%;
+    text-align: center;
+}
+.edit-comment-form p {
+    margin-bottom: 50px;
+}
 /* =============================== */
 /*              FOOTER             */
 /* =============================== */
@@ -161,7 +258,6 @@ form {
     padding: 40px 0 40px 0;
     color: white;
     background-color: #333333;
-
 }
 #footer .left-col {
     text-align: left;
@@ -176,43 +272,36 @@ form {
 #footer .right-col {
     text-align: left;
 }
-
-
 .list-of-links li {
     padding-bottom: 5px;
 }
-
 .list-of-social-medias li {
     padding-bottom: 9px;
     cursor: pointer;
 }
-
 .list-of-links a,
-.list-of-social-medias a{
+.list-of-social-medias a {
     font-size: 16px;
     text-decoration: none;
     color: white;
     cursor: pointer;
 }
-.list-of-links a:hover ,
-.list-of-social-medias a:hover{
+.list-of-links a:hover,
+.list-of-social-medias a:hover {
     text-decoration: none;
     color: white;
 }
-
 .shameless-plugin {
     text-align: center;
     font-size: 16px;
     margin-top: 20px;
 }
-
 li {
     list-style: none;
 }
-
 .alert {
     font-family: 'Pathway Gothic One';
-    text-align:center;
+    text-align: center;
     font-size: 20px;
     letter-spacing: 1px;
 }
@@ -232,4 +321,3 @@ li {
         margin-left: 0;
     }
 }
-

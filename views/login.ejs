@@ -2,18 +2,23 @@
 
     <div class="container">
         <div class="jumbotron login-jumbotron">
-        <h1>Log In</h1>
-        <hr>
-        <form class="form-group" action="/login" method="POST">
-            <h2 id="label">Username</h2>
-            <input type="text" name="username" placeholder="username" class="form-control">
-            <h2 id="label">Password</h2>
-            <input type="password" name="password" placeholder="password" class="form-control">
-            <button class="submit">Log In</button>
-        </form>
+            <h1>Log In</h1>
+            <hr>
+            <form class="form-group login-form" action="/login" method="POST">
+                <h2 id="label">Username</h2>
+                <input type="text" name="username" placeholder="username" class="form-control">
+                <h2 id="label">Password</h2>
+                <input type="password" name="password" placeholder="password" class="form-control">
+                <button class="submit">Log In</button>
+            </form>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 rules-content">
+                <a class="return-link" href="/events">Return to main page</a>
+            </div>
         </div>
     </div>
-
 
     <!-- ============================================ -->
     <!--                     FOOTER                   -->
@@ -29,7 +34,8 @@
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 right-col">
                     <ul class="list-of-links">
-                        <li><h2>Links</h2></li>
+                        <li>
+                            <h2>Links</h2></li>
                         <li><a>UTD Health Center</a></li>
                         <li><a>Campus Counseling Center</a></li>
                         <li><a>Login</a></li>
@@ -58,4 +64,4 @@
             </div>
         </div>
     </div>
-<% include ./partials/footer %>
+    <% include ./partials/footer %>

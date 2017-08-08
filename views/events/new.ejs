@@ -1,25 +1,98 @@
 <% include ../partials/header %>
 
-<div class="container">
-    <div class="row">
-    <h1 style="text-align: center;">We are making a new Event. Awesomesauce</h1>
-        <div style="width: 30%; margin: 30px auto;">
-            <form action="/events" method="POST">
-                <div class="form-group">
-                    <input type="text" name="titleOfEvent" placeholder="Title of Event" class="form-control" maxlength="30" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="imgURL" value="Disabled:NoExplicitMaterial" class="form-control" disabled>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="description" placeholder="describe event" class="form-control" maxlength="450" required>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
-                </div>
-            </form>
-            <a href="/events">Go back</a>
+    <div class="container">
+        <div class="row new-event-title">
+            <h2>Posting a new event? Awesomesauce!</h2>
+            <p>But first... We need to discuss the rules beforehand.</p>
+        </div>
+
+        <div class="row">
+            <h2 class="rules">Some basic rules to start off with...</h2>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 rules-content">
+                <p>Keep your content short, concise, and to the point. We don't want to read an essay, give the juicy details that we want to know and that'll bring more people in!</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 rules-content">
+                <p>Do not post any explicit/inappropriate material. All posts that contain these types of items will be deleted immediately by the moderators.</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 rules-content">
+                <p>You need a descriptive title, a time/place, and an image for your post. Post your image in your description and a moderator will place it in for you. This is for safety measures.</p>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 rules-content">
+                <p>Any posts that do not follow these rules are instantly thrown in the trash. Got it? If you agree to all these terms go ahead and click that SUBMIT button! Whoosh!</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="jumbotron">
+                <form class="new-event-form" action="/events" method="POST">
+                    <div class="form-group">
+                        <h2 id="label">Add in that SPICY Title</h2>
+                        <input type="text" name="titleOfEvent" placeholder="Title of Event" class="form-control" maxlength="30" required>
+                    </div>
+                    <div class="form-group">
+                        <h2 id="label">Insert a Beautiful Image (URL only)</h2>
+                        <input type="text" name="imgURL" value="Disabled:NoExplicitMaterial" class="form-control" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h2 id="label">Give us a Description! (Event/Time/Place)</h2>
+                        <textarea name="description" placeholder="Describe the Event" class="form-control" maxlength="450" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-lg btn-warning btn-block new-event-submit">Submit!</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 rules-content">
+                <a class="return-link" href="/events">Return to main page</a>
+            </div>
         </div>
     </div>
-</div>
-<% include ../partials/footer %>
+
+    <!-- ============================================ -->
+    <!--                     FOOTER                   -->
+    <!-- ============================================ -->
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs 12 left-col">
+                    <h2>GroupUP @ UTDallas</h2>
+                    <p>New to UTD? A student coming back for the new semester? It doesn't matter who you are, GroupUP is your answer to finding new friends and new experiences at this University. If you struggle with finding cool parties to go to then worry not, we're here to help.
+                    </p>
+                    <p>&copy; GroupUpUTD</p>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 right-col">
+                    <ul class="list-of-links">
+                        <li>
+                            <h2>Links</h2></li>
+                        <li><a>UTD Health Center</a></li>
+                        <li><a>Campus Counseling Center</a></li>
+                        <li><a>Login</a></li>
+                        <li><a>Register</a></li>
+                        <li><a>Taco</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 right-col">
+                    <ul class="list-of-social-medias">
+                        <li>
+                            <h2>Follow us @</h2></li>
+                        <li><a><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+                        <li><a><i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter </a></li>
+                        <li><a><i class="fa fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+                        <li><a><i class="fa fa-pinterest-square" aria-hidden="true"></i> Pinterest</a></li>
+                        <li><a><i class="fa fa-reddit-square" aria-hidden="true"></i> Reddit</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs 12 shameless-plugin">
+                    <p>Website made with ❤ by Bryan Tran </p>
+                    <p><a href="https://github.com/bryantran97" target="_blank">Github</a> | <a href="https://linkedin.com/in/bryantran97" target="_blank">LinkedIn</a> | <a href="http://bryan-tran.com" target="_blank">Portfolio</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <% include ../partials/footer %>

@@ -38,7 +38,7 @@ app.use(methodOverride("_method"));                     // adding method indicat
 app.use(flash());
 
 // database connection
-mongoose.connect("mongodb://localhost/groupievents", {useMongoClient: true});
+mongoose.connect("HIDDEN", {useMongoClient: true});
 mongoose.Promise = global.Promise;
 
 app.use(express.static(__dirname + "/public"));         // let express know the public directory (for CSS file linking)
